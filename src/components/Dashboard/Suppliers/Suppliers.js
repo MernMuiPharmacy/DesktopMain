@@ -269,7 +269,7 @@ setProdData(ds.value.data)
 
 
 */ }
-  useEffect (()=>{onloadStaff(),onloadProds(),AsyncStorage.setItem("screen","Suppliers")},[])
+  useEffect (()=>{onloadStaff();onloadProds();AsyncStorage.setItem("screen","Suppliers")},[])
   const unload=async ()=>{
     const val= await AsyncStorage.removeItem('tokenCookie');
     if (val!==null){return props.cb("")}

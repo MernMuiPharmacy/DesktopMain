@@ -14,7 +14,7 @@ axios({
   var counter=1
   var toBe=[]
   Object.defineProperty(toBe, 'length', { writable: true })
-  response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
+  response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])});counter++})
  // setDATASALES(toBe)
  // permutation=toBe
  permutation=toBe

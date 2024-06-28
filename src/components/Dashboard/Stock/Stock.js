@@ -277,7 +277,7 @@ await axios({
        
   })
 */}
-  useEffect (()=>{onloadStaff(),onloadsupp(),AsyncStorage.setItem("screen","Stock")},[])
+  useEffect (()=>{onloadStaff();onloadsupp();AsyncStorage.setItem("screen","Stock")},[])
   const styles = {
 
     largeIcon: {

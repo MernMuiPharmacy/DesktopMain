@@ -26,7 +26,7 @@ axios({
   
     var toBe=[]
     var cat=[]
-    response.data.map((e)=>{if(!eliminations.includes(e.productName)){!cat.includes(e.type)?cat.push(e.type):null,toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
+    response.data.map((e)=>{if(!eliminations.includes(e.productName)){!cat.includes(e.type)?cat.push(e.type):null;toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
     console.log(toBe) 
    data=toBe
    categories=cat
