@@ -111,7 +111,7 @@ useEffect (()=>{onscreenload()},[])
                   dispatch(reduxfetchSuppliers());
                   dispatch(reduxfetchDeletedStock());
                   dispatch(reduxfetchDeletedSuppliers());
-                  setTimeout(()=>{window.location.reload(false)},500);
+                  
                  
                  
                   
