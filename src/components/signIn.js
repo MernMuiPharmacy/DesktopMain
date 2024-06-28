@@ -24,11 +24,11 @@ import axios from 'axios';
 import { LINK_TO_BACKEND } from '../var';
 import LinearIndeterminate from './Dashboard/loading';
 import { useSelector, useDispatch } from 'react-redux'
-import { reduxfetch } from './redux/DataSales.js';
-import { reduxfetchStock } from './redux/DataStock.js';
-import { reduxfetchSuppliers } from './redux/DataSuppliers.js';
-import { reduxfetchDeletedStock } from './redux/DataDeletedStock.js';
-import { reduxfetchDeletedSuppliers } from './redux/DataDeletedSuppliers.js';
+import { reduxfetch } from '../redux/DataSales.js';
+import { reduxfetchStock } from '../redux/DataStock.js';
+import { reduxfetchSuppliers } from '../redux/DataSuppliers.js';
+import { reduxfetchDeletedStock } from '../redux/DataDeletedStock.js';
+import { reduxfetchDeletedSuppliers } from '../redux/DataDeletedSuppliers.js';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
