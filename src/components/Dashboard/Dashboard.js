@@ -50,7 +50,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AutoDelete } from '@mui/icons-material';
 import LinearIndeterminate from '../Dashboard/loading.js';
 import { LINK_TO_BACKEND } from '../../var.js';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch } from 'react-redux'
+import { reduxfetch } from '../../redux/DataSales.js';
+import { reduxfetchStock } from '../../redux/DataStock.js';
+import { reduxfetchSuppliers } from '../../redux/DataSuppliers.js';
+import { reduxfetchDeletedStock } from '../../redux/DataDeletedStock.js';
+import { reduxfetchDeletedSuppliers } from '../../redux/DataDeletedSuppliers.js';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -114,7 +120,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 // TODO 2 change this into a state later, mostly based on the time of day? dont forget to use useEffect(based on hour change?) or else it wll be unchanging
 export default function Dashboard(props) {
-
+  const dispatch=useDispatch()
   const unload=async ()=>{
     const val=AsyncStorage.removeItem('tokenCookie');
     if (val!==null){return props.cb("")}
@@ -142,7 +148,13 @@ else if (current==="dark"){props.themeCB("light")}
     setOpen(!open);
   };
   const navigation=useNavigation();
-
+  useEffect(()=>{ dispatch(reduxfetch())
+    dispatch(reduxfetchStock())
+    dispatch(reduxfetchSuppliers())
+    dispatch(reduxfetchDeletedStock())
+    dispatch(reduxfetchDeletedSuppliers())
+   
+   },[])
 
 const ds=useSelector(state=>state.datastock)
 const dsupp=useSelector(state=>state.datasuppliers)
@@ -231,7 +243,7 @@ console.log("input date && formatted date :",inputDate,"??BARRIER BARRIER??",for
   return formattedDate;
 }
 
- useEffect (()=>{onloadData(),onloadSuppliers(),onloadSales(),navigation.navigate(props.currentScreen)},[])
+ useEffect (()=>{onloadData();onloadSuppliers();onloadSales();navigation.navigate(props.currentScreen)},[])
 
 useEffect(()=>{
   if(DATA.length&&DATASALES.length&&SUPPLIER_DATA.length){setLoading(false)}
@@ -250,7 +262,7 @@ useEffect(()=>{
     {if (months[i]===e["date"].slice(8,11)){
     var name=e.title
     var coll=0
-  PRODARR.map((p,j)=>{if ((p.productName.toLowerCase()).includes(name.toLowerCase())){coll=coll+parseInt(p.price)}})
+  PRODARR.map((p)=>{if ((p.productName.toLowerCase()).includes(name.toLowerCase())){coll=coll+parseInt(p.price)}})
   revenues[i]=revenues[i]+coll
 }}})
 
