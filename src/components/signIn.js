@@ -105,12 +105,13 @@ useEffect (()=>{onscreenload()},[])
     axios
                   .post(`${LINK_TO_BACKEND}staff/login`,tobe)
                   .then((resp)=>{storeData(resp.data);cb(resp.data)
-                  ;onloadUserCredentials();window.location.reload(false);
+                  ;onloadUserCredentials();
                   dispatch(reduxfetch());
                   dispatch(reduxfetchStock());
                   dispatch(reduxfetchSuppliers());
                   dispatch(reduxfetchDeletedStock());
                   dispatch(reduxfetchDeletedSuppliers());
+                  setTimeout(()=>{window.location.reload(false)},500);
                  
                  
                   
