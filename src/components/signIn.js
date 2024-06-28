@@ -67,12 +67,12 @@ useEffect (()=>{onscreenload()},[])
         headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
         url:`${LINK_TO_BACKEND}staff/getUser`
     }).then((response)=>{
-        console.log(response)
+        console.log(response);
         //setCreds({...creds,name:response.data.name,email:response.data.email,idstaff:response.data.idstaff,role:response.data.role})
-        sn(response.data.name)
-        se(response.data.email)
-        sr(response.data.role)
-        si(response.data.idstaff)
+        sn(response.data.name);
+        se(response.data.email);
+        sr(response.data.role);
+        si(response.data.idstaff);
     });
 
   }
@@ -97,8 +97,8 @@ useEffect (()=>{onscreenload()},[])
     }
     axios
                   .post(`${LINK_TO_BACKEND}staff/login`,tobe)
-                  .then((resp)=>{storeData(resp.data),cb(resp.data)
-                  ,onloadUserCredentials(),window.location.reload(false)
+                  .then((resp)=>{storeData(resp.data);cb(resp.data)
+                  ;onloadUserCredentials();window.location.reload(false);
                   
                   })
                   .catch(error=>{
