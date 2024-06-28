@@ -42,13 +42,13 @@ import { reduxfetchDeletedSuppliers } from './redux/DataDeletedSuppliers.js';
 function App() {
 
  const dispatch=useDispatch()
-
- dispatch(reduxfetch())
- dispatch(reduxfetchStock())
- dispatch(reduxfetchSuppliers())
- dispatch(reduxfetchDeletedStock())
- dispatch(reduxfetchDeletedSuppliers())
-
+useEffect(()=>{ dispatch(reduxfetch())
+  dispatch(reduxfetchStock())
+  dispatch(reduxfetchSuppliers())
+  dispatch(reduxfetchDeletedStock())
+  dispatch(reduxfetchDeletedSuppliers())
+ 
+ },[])
 
 
 
