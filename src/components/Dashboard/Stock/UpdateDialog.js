@@ -161,7 +161,9 @@ useEffect(()=>{onLoadIfUpdating(props.update)},[props.update])
   const dispatch=useDispatch()
   const uploadStock=(data)=>{
    //dispatch(reduxUpdateStock(data))
-     axios.put(`${LINK_TO_BACKEND}stock/updateStock`,data).then(()=>{window.location.reload(false)})
+     axios.put(`${LINK_TO_BACKEND}stock/updateStock`,{...data,prevName:props.update.productName})//.then(()=>{window.location.reload(false)})
+     console.log("updatesss",data)
+     console.log("props in update",props.update.productName)
   }
 
   return (
@@ -224,7 +226,7 @@ useEffect(()=>{onLoadIfUpdating(props.update)},[props.update])
  }}
 >
  {/* <MenuItem value={1}>yes</MenuItem>*/}
- {/* <MenuItem value={provider}>{props.supp.map((e)=>{if (e["idprovider"]===provider) {return e.companyname}})}</MenuItem> */}
+ <MenuItem value={provider}>{props.supp.map((e)=>{if (e["idprovider"]===provider) {return e.companyname}})}</MenuItem>
  {props.supp.map((e)=><MenuItem value={e["id"]}>{e["companyname"]}</MenuItem>)}
  {/* <MenuItem value={30}>Thirty</MenuItem> */}
 </Select>
