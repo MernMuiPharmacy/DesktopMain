@@ -160,8 +160,8 @@ useEffect(()=>{onLoadIfUpdating(props.update)},[props.update])
   }
   const dispatch=useDispatch()
   const uploadStock=(data)=>{
-   dispatch(reduxUpdateStock(data))
-    // axios.put(`${LINK_TO_BACKEND}stock/updateStock`,data).then(()=>{window.location.reload(false)})
+   //dispatch(reduxUpdateStock(data))
+     axios.put(`${LINK_TO_BACKEND}stock/updateStock`,data).then(()=>{window.location.reload(false)})
   }
 
   return (

@@ -44,16 +44,16 @@ export default function NewGrid(props){
   const dispatch=useDispatch()
 
   const del=async (identifier)=>{
-  //   await axios({
-  //       method:'post',
-  //       headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-  //       url:`${LINK_TO_BACKEND}staff/removeThroughManager`,
-  //       data:{idstaff:identifier}
-  //   }).then((response)=>{
-  //     window.location.reload(false)
-  //     console.log(response)
-  // })
- dispatch(reduxRemoveStaff(identifier))
+    await axios({
+        method:'post',
+        headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}staff/removeThroughManager`,
+        data:{idstaff:identifier}
+    }).then((response)=>{
+      window.location.reload(false)
+      console.log(response)
+  })
+ //dispatch(reduxRemoveStaff(identifier))
 }
   const actions= (element) =>{
     const [decision,setDecision]=React.useState(false);

@@ -60,7 +60,11 @@ console.log("itemsundersupp",itemsUnderSupplier,props.respectiveItems,props)
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={()=>{dispatch(reduxDeleteSupplier({itemsUnderSupplier:itemsUnderSupplier,props:props.toDelete}))}} autoFocus>
+          <Button onClick={()=>{
+             itemsUnderSupplier.map((e)=>{ axios.post(`${LINK_TO_BACKEND}deletedstock/addDeletion`,e)}); 
+             axios.post(`${LINK_TO_BACKEND}deletedsuppliers/addDeletion`,{idprovider:props.toDelete.id,companyname:props.toDelete.companyname,email:props.toDelete.email,phoneNumber:props.toDelete.phoneNumber,providerImage:props.toDelete.providerImage}).then(()=>{window.location.reload(false)})
+            //dispatch(reduxDeleteSupplier({itemsUnderSupplier:itemsUnderSupplier,props:props.toDelete}))
+            }} autoFocus>
             Proceed
           </Button>
         </DialogActions>

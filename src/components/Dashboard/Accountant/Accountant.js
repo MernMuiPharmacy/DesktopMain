@@ -147,7 +147,7 @@ const DrawerRight = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'o
 
 // TODO 2 change this into a state later, mostly based on the time of day? dont forget to use useEffect(based on hour change?) or else it wll be unchanging
 export default function Accountant(props) {
-  const dispatch=useDispatch()
+  //const dispatch=useDispatch()
   const [DATA,setDATA]=useState([]);
   const unload=async ()=>{
     const val= await AsyncStorage.removeItem('tokenCookie');
@@ -282,7 +282,7 @@ const onloadsupp=async ()=>{
 })
 //setSuppData(await ddelsupp.value)
 }
-const ddelstock=useSelector(state=>state.datadeletedstock)
+//const ddelstock=useSelector(state=>state.datadeletedstock)
 const onloaddelstock=async ()=>{
   await axios({
       method:'get',
@@ -324,8 +324,8 @@ const isthereSupplierQuery=(query)=>{
   return col
 
 }
-dispatch(reduxfetchStaff())
-const stf=useSelector(state=>state.datastaff)
+//dispatch(reduxfetchStaff())
+//const stf=useSelector(state=>state.datastaff)
 const isQueryingLoadStaff=async ()=>{
   await axios({
     method:'get',
@@ -386,29 +386,29 @@ return col
 // !!notice!! export happens before wiping!!!!
 
 const handleWipe=()=>{
-props.query.map((e)=>{dispatch(reduxWipeStockDeletions(e.productName))})
-props.query.map((e)=>{dispatch(reduxWipeFromStock(e.productName))})
-props.query.map((e)=>{dispatch(reduxWipeFromSales(e.productName))});
+props.query.map((e)=>{ axios.post(`${LINK_TO_BACKEND}wipe/wipeStockDeletions`,{productName:e.productName})})
+props.query.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeStock`,{productName:e.productName})})
+props.query.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeSales`,{productName:e.productName})});
 setfinished(true)
 }
 const handleWipeWithoutSales=()=>{
-  props.query.map((e)=>{dispatch(reduxWipeFromStock(e.productName))})
-props.query.map((e)=>{dispatch(reduxWipeStockDeletions(e.productName))});
+  props.query.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeStock`,{productName:e.productName})})
+props.query.map((e)=>{ axios.post(`${LINK_TO_BACKEND}wipe/wipeStockDeletions`,{productName:e.productName})});
 setfinished(true)
 }
 const handleWipeSupp=()=>{
-  stkData.map((e)=>{dispatch(reduxWipeFromStock(e.productName))})
-stkData.map((e)=>{dispatch(reduxWipeStockDeletions(e.productName))})
-stkData.map((e)=>{dispatch(reduxWipeFromSales(e.productName))})
-props.supplierQuery.map((e)=>{dispatch(reduxWipeSupplier(e.companyname))})
-props.supplierQuery.map((e)=>{dispatch(reduxWipeSupplierDeletions(e.companyname))});
+  stkData.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeStock`,{productName:e.productName})})
+stkData.map((e)=>{ axios.post(`${LINK_TO_BACKEND}wipe/wipeStockDeletions`,{productName:e.productName})})
+stkData.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeSales`,{productName:e.productName})})
+props.supplierQuery.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeSuppliers`,{companyname:e.companyname})})
+props.supplierQuery.map((e)=>{axios.post(`${LINK_TO_BACKEND}deletedsuppliers/removeDeletion`,{companyname:e.companyname})});
 setfinished(true)
 }
 const handleWipeSuppWithoutSales=()=>{
-  stkData.map((e)=>{dispatch(reduxWipeFromStock(e.productName))})
-stkData.map((e)=>{dispatch(reduxWipeStockDeletions(e.productName))})
-props.supplierQuery.map((e)=>{dispatch(reduxWipeSupplier(e.companyname))})
-props.supplierQuery.map((e)=>{dispatch(reduxWipeSupplierDeletions(e.companyname))})
+  stkData.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeStock`,{productName:e.productName})})
+stkData.map((e)=>{ axios.post(`${LINK_TO_BACKEND}wipe/wipeStockDeletions`,{productName:e.productName})})
+props.supplierQuery.map((e)=>{axios.post(`${LINK_TO_BACKEND}wipe/wipeSuppliers`,{companyname:e.companyname})})
+props.supplierQuery.map((e)=>{axios.post(`${LINK_TO_BACKEND}deletedsuppliers/removeDeletion`,{companyname:e.companyname})})
 setfinished(true)
 }
 const handleExcelThroughQuery=async ()=>{

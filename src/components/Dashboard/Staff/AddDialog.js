@@ -22,17 +22,17 @@ const dispatch=useDispatch()
 
 }
 const uploadStaff= async (data)=>{
- // axios.post('http://localhost:4000/staff/insertThroughManager',data).then(()=>{window.location.reload(false)})
-//  await axios({
-//     method:'post',
-//     headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//     url:`${LINK_TO_BACKEND}staff/insertThroughManager`,
-//     data:data
-// }).then((response)=>{
-//     console.log(response)
-//     window.location.reload(false)
-// });
-dispatch(reduxUploadStaff(data))
+ axios.post('http://localhost:4000/staff/insertThroughManager',data).then(()=>{window.location.reload(false)})
+ await axios({
+    method:'post',
+    headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+    url:`${LINK_TO_BACKEND}staff/insertThroughManager`,
+    data:data
+}).then((response)=>{
+    console.log(response)
+    window.location.reload(false)
+});
+//dispatch(reduxUploadStaff(data))
 }
  const handleClickOpen = () => {
     props.cb(true);

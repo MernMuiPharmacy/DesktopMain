@@ -120,7 +120,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 // TODO 2 change this into a state later, mostly based on the time of day? dont forget to use useEffect(based on hour change?) or else it wll be unchanging
 export default function Dashboard(props) {
-  const dispatch=useDispatch()
+  //const dispatch=useDispatch()
   const unload=async ()=>{
     const val=AsyncStorage.removeItem('tokenCookie');
     if (val!==null){return props.cb("")}
@@ -148,18 +148,18 @@ else if (current==="dark"){props.themeCB("light")}
     setOpen(!open);
   };
   const navigation=useNavigation();
-  useEffect(()=>{ dispatch(reduxfetch())
-    dispatch(reduxfetchStock())
-    dispatch(reduxfetchSuppliers())
-    dispatch(reduxfetchDeletedStock())
-    dispatch(reduxfetchDeletedSuppliers())
+  // useEffect(()=>{ dispatch(reduxfetch())
+  //   dispatch(reduxfetchStock())
+  //   dispatch(reduxfetchSuppliers())
+  //   dispatch(reduxfetchDeletedStock())
+  //   dispatch(reduxfetchDeletedSuppliers())
    
-   },[])
+  //  },[])
 
-const ds=useSelector(state=>state.datastock)
-const dsupp=useSelector(state=>state.datasuppliers)
-const dsa=useSelector(state=>state.datasales)
-console.log("DASHBOARD VALUES",ds,dsupp,dsa)
+// const ds=useSelector(state=>state.datastock)
+// const dsupp=useSelector(state=>state.datasuppliers)
+// const dsa=useSelector(state=>state.datasales)
+//console.log("DASHBOARD VALUES",ds,dsupp,dsa)
   const onloadData=async ()=>{
     await axios({
         method:'get',

@@ -40,7 +40,7 @@ const dispatch=useDispatch();
         <Button onClick={()=>{props.updateHook(element.row),props.callbackUpdate(true)}} variant="contained" endIcon={<Edit />}>
           Edit
         </Button>
-        <Button onClick={()=>{dispatch(reduxDeleteStock(element.row))}} color="error" variant="outlined" startIcon={<DeleteIcon />}>
+        <Button onClick={()=>{ axios.post(`${LINK_TO_BACKEND}deletedstock/addDeletion`,{productName:element.row.productName,activeIngredient:element.row.activeIngredient,type:element.row.type,price:element.row.price,prescOnly:element.row.prescOnly,qty:element.row.qty,expires:element.row.expires,productImage:element.row.productImage,refrigerate:element.row.refrigerate,deletedproviders:element.row.providers}).then(()=>{window.location.reload(false)})}} color="error" variant="outlined" startIcon={<DeleteIcon />}>
           Delete
         </Button>
    

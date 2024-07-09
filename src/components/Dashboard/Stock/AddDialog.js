@@ -136,8 +136,8 @@ const categoryToggle=(event)=>{
   }
   const dispatch=useDispatch()
   const uploadStock=(data)=>{
-    dispatch(reduxUploadStock(data))
-    //axios.post(`${LINK_TO_BACKEND}stock/addStock`,data).then(()=>{window.location.reload(false)})
+   // dispatch(reduxUploadStock(data))
+    axios.post(`${LINK_TO_BACKEND}stock/addStock`,data).then(()=>{window.location.reload(false)})
   }
 
   return (

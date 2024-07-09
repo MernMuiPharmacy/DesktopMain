@@ -38,8 +38,8 @@ console.log(col)
 }
 const dispatch=useDispatch()
 const uploadSupplier=(data)=>{
-dispatch(reduxUpdateSupplier(data))
-//axios.put(`${LINK_TO_BACKEND}suppliers/UpdateSupplier`,data).then(()=>{window.location.reload(false)})
+//dispatch(reduxUpdateSupplier(data))
+axios.put(`${LINK_TO_BACKEND}suppliers/UpdateSupplier`,data).then(()=>{window.location.reload(false)})
 }
  const handleClickOpen = () => {
     props.cb(true);

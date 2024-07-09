@@ -39,7 +39,7 @@ export default function NewGrid(props){
         {/* <Button onClick={()=>{props.updateHook(element.row),props.callbackUpdate(true)}} variant="contained" endIcon={<Edit />}>
           Edit
         </Button> */}
-        <Button onClick={()=>{dispatch(reduxRemoveSupplierDeletion(element.row.companyname))}} color="success" variant="outlined" startIcon={<DeleteIcon />}>
+        <Button onClick={()=>{axios.post(`${LINK_TO_BACKEND}deletedsuppliers/removeDeletion`,{companyname:element.row.companyname}).then(()=>{window.location.reload(false)})}} color="success" variant="outlined" startIcon={<DeleteIcon />}>
           Restore
         </Button>
    

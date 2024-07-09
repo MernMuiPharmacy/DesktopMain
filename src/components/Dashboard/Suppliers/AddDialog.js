@@ -21,7 +21,7 @@ export default function SupplierDialog(props) {
 }
 const dispatch=useDispatch()
 const uploadSupplier=(data)=>{
-  dispatch(reduxUploadSupplier(data))
+  axios.post(`${LINK_TO_BACKEND}suppliers/AddSupplier`,data).then(()=>{window.location.reload(false)})
 }
  const handleClickOpen = () => {
     props.cb(true);
