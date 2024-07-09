@@ -161,7 +161,7 @@ useEffect(()=>{onLoadIfUpdating(props.update)},[props.update])
   const dispatch=useDispatch()
   const uploadStock=(data)=>{
    //dispatch(reduxUpdateStock(data))
-     axios.put(`${LINK_TO_BACKEND}stock/updateStock`,{...data,prevName:props.update.productName})//.then(()=>{window.location.reload(false)})
+     axios.put(`${LINK_TO_BACKEND}stock/updateStock`,{...data,prevName:props.update.productName}).then(()=>{window.location.reload(false)})
      console.log("updatesss",data)
      console.log("props in update",props.update.productName)
   }
