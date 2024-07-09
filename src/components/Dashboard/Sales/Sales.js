@@ -189,17 +189,17 @@ const ds=useSelector( state=>state.datasales)
 console.log("STATE !!!!!!",ds)
 // setDATASALES(ds.value)
   const onloadSales=async ()=>{
-    // await axios({
-    //     method:'get',
-    //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-    //     url:`${LINK_TO_BACKEND}sales/getAllSales`
-    // }).then((response)=>{
-    //     console.log(response)
-    //     var counter=1
-    //     var toBe=[]
-    //     response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
-    //     setDATASALES(toBe)
-    // });
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}sales/getAllSales`
+    }).then((response)=>{
+        console.log(response)
+        var counter=1
+        var toBe=[]
+        response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
+        setDATASALES(toBe)
+    });
 
 
 
@@ -208,7 +208,7 @@ console.log("STATE !!!!!!",ds)
 
 
 
-   setDATASALES(ds.value)
+   //setDATASALES(ds.value)
    //console.log("store state",store.getState(),ds)
   }
   function formatDate(inputDate) {
