@@ -32,23 +32,23 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 
 
-import { useSelector, useDispatch } from 'react-redux'
-import { reduxfetch } from './redux/DataSales.js';
-import { reduxfetchStock } from './redux/DataStock.js';
-import { reduxfetchSuppliers } from './redux/DataSuppliers.js';
-import { reduxfetchDeletedStock } from './redux/DataDeletedStock.js';
-import { reduxfetchDeletedSuppliers } from './redux/DataDeletedSuppliers.js';
+// import { useSelector, useDispatch } from 'react-redux'
+// import { reduxfetch } from './redux/DataSales.js';
+// import { reduxfetchStock } from './redux/DataStock.js';
+// import { reduxfetchSuppliers } from './redux/DataSuppliers.js';
+// import { reduxfetchDeletedStock } from './redux/DataDeletedStock.js';
+// import { reduxfetchDeletedSuppliers } from './redux/DataDeletedSuppliers.js';
 //import store from './store.js';
 function App() {
 
- const dispatch=useDispatch()
-useEffect(()=>{ dispatch(reduxfetch())
-  dispatch(reduxfetchStock())
-  dispatch(reduxfetchSuppliers())
-  dispatch(reduxfetchDeletedStock())
-  dispatch(reduxfetchDeletedSuppliers())
+//  const dispatch=useDispatch()
+// useEffect(()=>{ dispatch(reduxfetch())
+//   dispatch(reduxfetchStock())
+//   dispatch(reduxfetchSuppliers())
+//   dispatch(reduxfetchDeletedStock())
+//   dispatch(reduxfetchDeletedSuppliers())
  
- },[])
+//  },[])
 
 
 

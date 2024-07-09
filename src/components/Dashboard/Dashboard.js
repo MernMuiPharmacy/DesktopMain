@@ -61,8 +61,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -160,58 +160,58 @@ const ds=useSelector(state=>state.datastock)
 const dsupp=useSelector(state=>state.datasuppliers)
 const dsa=useSelector(state=>state.datasales)
 console.log("DASHBOARD VALUES",ds,dsupp,dsa)
-  const onloadData=()=>{
-    // await axios({
-    //     method:'get',
-    //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-    //     url:`${LINK_TO_BACKEND}stock/getAllStock`
-    // }).then((response)=>{
-    //     console.log(response)
-    //     var toBe=[]
-    //     response.data.map((e)=>{toBe.push({productName:e.productName,productImage:e.productImage,price:e["price"],activeIngredient:e.activeIngredient,prescOnly:e.prescOnly,type:e.type,qty:e["qty"].toString(),expires:e.expires,refregerate:e.refrigerate,providerID:e["providers"].toString()})})
-    //     setDATA(toBe);
-    // });
-    var toBe=[]
-   ds.value.data!==undefined?ds.value.data.map((e)=>{toBe.push({productName:e.productName,productImage:e.productImage,price:e["price"],activeIngredient:e.activeIngredient,prescOnly:e.prescOnly,type:e.type,qty:e["qty"].toString(),expires:e.expires,refregerate:e.refrigerate,providerID:e["providers"].toString()})}):null
-    setDATA(toBe)
-    console.log("DATASTOCK REDUX",toBe)
+  const onloadData=async ()=>{
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}stock/getAllStock`
+    }).then((response)=>{
+        console.log(response)
+        var toBe=[]
+        response.data.map((e)=>{toBe.push({productName:e.productName,productImage:e.productImage,price:e["price"],activeIngredient:e.activeIngredient,prescOnly:e.prescOnly,type:e.type,qty:e["qty"].toString(),expires:e.expires,refregerate:e.refrigerate,providerID:e["providers"].toString()})})
+        setDATA(toBe);
+    });
+  //   var toBe=[]
+  //  ds.value.data!==undefined?ds.value.data.map((e)=>{toBe.push({productName:e.productName,productImage:e.productImage,price:e["price"],activeIngredient:e.activeIngredient,prescOnly:e.prescOnly,type:e.type,qty:e["qty"].toString(),expires:e.expires,refregerate:e.refrigerate,providerID:e["providers"].toString()})}):null
+  //   setDATA(toBe)
+  //   console.log("DATASTOCK REDUX",toBe)
  }
-const onloadSuppliers=()=>{
-  // await axios({
-  //     method:'get',
-  //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-  //     url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
-  // }).then((response)=>{
-  //     console.log(response)
-  //     var toBe=[]
-  //     response.data.map((e)=>{toBe.push({idprovider:e["idprovider"].toString(),companyname:e.companyname,email:e.email,phoneNumber:e.phoneNumber,providerImage:e.providerImage})})
-  //     setSUPPLIER_DATA(toBe)
-  // });
-  var toBe=[];
+const onloadSuppliers=async ()=>{
+  await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
+  }).then((response)=>{
+      console.log(response)
+      var toBe=[]
+      response.data.map((e)=>{toBe.push({idprovider:e["idprovider"].toString(),companyname:e.companyname,email:e.email,phoneNumber:e.phoneNumber,providerImage:e.providerImage})})
+      setSUPPLIER_DATA(toBe)
+  });
+//   var toBe=[];
 
- dsupp.value.map((e)=>{toBe.push({idprovider:e["id"].toString(),companyname:e.companyname,email:e.email,phoneNumber:e.phoneNumber,providerImage:e.providerImage})})
+//  dsupp.value.map((e)=>{toBe.push({idprovider:e["id"].toString(),companyname:e.companyname,email:e.email,phoneNumber:e.phoneNumber,providerImage:e.providerImage})})
 
-  setSUPPLIER_DATA(toBe)
-  console.log("DATASupp REDUX",toBe)
+//   setSUPPLIER_DATA(toBe)
+//   console.log("DATASupp REDUX",toBe)
 }
-const onloadSales=()=>{
-  // await axios({
-  //     method:'get',
-  //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-  //     url:`${LINK_TO_BACKEND}sales/getAllSales`
-  // }).then((response)=>{
-  //     console.log(response)
-  //     var counter=1
+const onloadSales=async()=>{
+  await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}sales/getAllSales`
+  }).then((response)=>{
+      console.log(response)
+      var counter=1
+      var toBe=[]
+      response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
+      setDATASALES(toBe)
+  });
+  // var counter=1
   //     var toBe=[]
-  //     response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
-  //     setDATASALES(toBe)
-  // });
-  //var counter=1
-    //   var toBe=[]
-    //  dsa.value.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
+  //    dsa.value.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
   //already formatted
-  setDATASALES(dsa.value)
-  console.log("DATASale REDUX",dsa.value)
+  // setDATASALES(dsa.value)
+  // console.log("DATASale REDUX",dsa.value)
   //already formatted
 }
 function formatDate(inputDate) {

@@ -56,8 +56,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -181,25 +181,25 @@ else if (current==="dark"){props.themeCB("light")}
   //const dds=useSelector(state=>state.datadeletedstock)
   const ddsupp=useSelector(state=>state.datadeletedsuppliers)
   const onloadStaff=async ()=>{
-  //   await axios({
-  //       method:'get',
-  //       //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-  //       url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
-  //   }).then((response)=>{
-  //       console.log(response)
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
+    }).then((response)=>{
+        console.log(response)
       
-  //       var toBe=[]
-  //       response.data.map((e)=>{toBe.push({id:e.iddprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})});
+        var toBe=[]
+        response.data.map((e)=>{toBe.push({id:e.iddprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})});
        
-  //       console.log(toBe)
+        console.log(toBe)
        
-  //      setData(toBe)
+       setData(toBe)
     
 
-  //      console.log(data)
+       console.log(data)
        
-  // })
-  setData(ddsupp.value.length?ddsupp.value:[])
+  })
+ // setData(ddsupp.value.length?ddsupp.value:[])
 }
   useEffect (()=>{onloadStaff(),AsyncStorage.setItem("screen","DeletedSuppliers")},[])
   const unload=async ()=>{

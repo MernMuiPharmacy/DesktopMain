@@ -57,8 +57,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -184,60 +184,60 @@ else if (current==="dark"){props.themeCB("light")}
   };
   const dsupp=useSelector(state=>state.datasuppliers)
   const onloadStaff=async ()=>{
-//     await axios({
-//         method:'get',
-//         //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//         url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
-//     }).then(async (response)=>{
-// await axios({
-//         method:'get',
-//         //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//         url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
-//     }).then((resp)=>{
-//         var eliminations=[]
-//         resp.data.map((e)=>{eliminations.push(e.companyname)});
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
+    }).then(async (response)=>{
+await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
+    }).then((resp)=>{
+        var eliminations=[]
+        resp.data.map((e)=>{eliminations.push(e.companyname)});
     
  
-//         console.log(response)
+        console.log(response)
       
-//         var toBe=[]
-//         response.data.map((e)=>{if(!eliminations.includes(e.companyname)){toBe.push({id:e.idprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})}});
-//         console.log(toBe) 
-//        setData(toBe)
-//     console.log(data)
+        var toBe=[]
+        response.data.map((e)=>{if(!eliminations.includes(e.companyname)){toBe.push({id:e.idprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})}});
+        console.log(toBe) 
+       setData(toBe)
+    console.log(data)
        
-//   })
+  })
        
-//   })
-setData(dsupp.value)
+  })
+// setData(dsupp.value)
 }
 const ds=useSelector(state=>state.datastock)
 const onloadProds=async ()=>{
-//   await axios({
-//       method:'get',
-//       //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//       url:`${LINK_TO_BACKEND}stock/getAllStock`
-//   }).then(async (response)=>{
-//     await axios({
-//       method:'get',
-//       //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//       url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
-//   }).then((resp)=>{
-//       var eliminations=[]
-//       resp.data.map((e)=>{eliminations.push(e.productName)});
+  await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}stock/getAllStock`
+  }).then(async (response)=>{
+    await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
+  }).then((resp)=>{
+      var eliminations=[]
+      resp.data.map((e)=>{eliminations.push(e.productName)});
   
 
-//       console.log(response)
+      console.log(response)
     
-//       var toBe=[]
-//       response.data.map((e)=>{if(!eliminations.includes(e.productName)){toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,deletedproviders:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
-//       console.log(toBe) 
-//      setProdData(toBe)
-//   console.log(data)
+      var toBe=[]
+      response.data.map((e)=>{if(!eliminations.includes(e.productName)){toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,deletedproviders:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
+      console.log(toBe) 
+     setProdData(toBe)
+  console.log(data)
      
-// })
-// })
-setProdData(ds.value.data)
+})
+})
+// setProdData(ds.value.data)
 }
 {/*
   const onloadStaff=async ()=>{

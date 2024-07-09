@@ -57,8 +57,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -189,25 +189,25 @@ else if (current==="dark"){props.themeCB("light")}
   dispatch(reduxfetchStaff())
 const stf=useSelector(state=>state.datastaff)
   const onloadStaff=async ()=>{
-  //   await axios({
-  //       method:'get',
-  //       headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-  //       url:`${LINK_TO_BACKEND}staff/getAllUsers`
-  //   }).then((response)=>{
-  //       console.log(response)
+    await axios({
+        method:'get',
+        headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}staff/getAllUsers`
+    }).then((response)=>{
+        console.log(response)
       
-  //       var toBe=[]
-  //       response.data.map((e)=>{toBe.push({id:e.idstaff,name:e.name,role:e.role,email:e.email,activated:e.activationStatus})});
+        var toBe=[]
+        response.data.map((e)=>{toBe.push({id:e.idstaff,name:e.name,role:e.role,email:e.email,activated:e.activationStatus})});
        
-  //       console.log(toBe)
+        console.log(toBe)
        
-  //      setData(toBe)
+       setData(toBe)
     
 
-  //      console.log(data)
+       console.log(data)
        
-  // })
-  setData(await stf.value)
+  })
+  // setData(await stf.value)
 }
   useEffect (()=>{onloadStaff(),AsyncStorage.setItem("screen","Staff")},[])
 

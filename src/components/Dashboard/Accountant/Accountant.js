@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as XLSX from "xlsx";
 import {useState,useEffect} from "react";
-//import axios from 'axios';
+import axios from 'axios';
 import dayjs from 'dayjs';
 import { useNavigation } from '@react-navigation/native';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -63,8 +63,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -156,15 +156,15 @@ export default function Accountant(props) {
   }
   const ds=useSelector(state=>state.datastock)
   const onloadData=async ()=>{
-    // await axios({
-    //     method:'get',
-    //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-    //     url:`${LINK_TO_BACKEND}stock/getAllStock`
-    // }).then((response)=>{
-    //     console.log(response)
-    //     setDATA(response.data)
-    // });
-setDATA(await ds.value.data)
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}stock/getAllStock`
+    }).then((response)=>{
+        console.log(response)
+        setDATA(response.data)
+    });
+///setDATA(await ds.value.data)
 
  }
   const selecting=["timeStart","timeEnd","dateStart","dateEnd"]
@@ -206,18 +206,18 @@ else if (current==="dark"){props.themeCB("light")}
 
   const dsa=useSelector(state=>state.datasales)
   const onloadSales=async ()=>{
-    // await axios({
-    //     method:'get',
-    //     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-    //     url:`${LINK_TO_BACKEND}sales/getAllSales`
-    // }).then((response)=>{
-    //     console.log(response)
-    //     var counter=1
-    //     var toBe=[]
-    //     response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
-    //     setDATASALES(toBe)
-    // });
-    setDATASALES(await dsa.value)
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}sales/getAllSales`
+    }).then((response)=>{
+        console.log(response)
+        var counter=1
+        var toBe=[]
+        response.data.map((e)=>{toBe.push({id:counter,title:e["productName"],date:formatDate(e["date"])}),counter++})
+        setDATASALES(toBe)
+    });
+  //  setDATASALES(await dsa.value)
   }
   
   function formatDate(inputDate) {
@@ -262,47 +262,47 @@ const [stkData,setStkData]=React.useState([]);
 const [finished,setfinished]=React.useState(false);
 const ddelsupp=useSelector(state=>state.datadeletedsuppliers)
 const onloadsupp=async ()=>{
-//   await axios({
-//       method:'get',
-//       //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//       url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
-//   }).then((response)=>{
-//       console.log(response)
+  await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
+  }).then((response)=>{
+      console.log(response)
     
-//     //  var toBe=[]
-//     //  response.data.map((e)=>{toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})});
+    //  var toBe=[]
+    //  response.data.map((e)=>{toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})});
      
-//      // console.log(toBe)
+     // console.log(toBe)
      
-//      setSuppData(response.data)
+     setSuppData(response.data)
   
 
-//      //console.log(data)
+     //console.log(data)
      
-// })
-setSuppData(await ddelsupp.value)
+})
+//setSuppData(await ddelsupp.value)
 }
 const ddelstock=useSelector(state=>state.datadeletedstock)
 const onloaddelstock=async ()=>{
-//   await axios({
-//       method:'get',
-//       //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//       url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
-//   }).then((response)=>{
-//       console.log(response)
+  await axios({
+      method:'get',
+      //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+      url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
+  }).then((response)=>{
+      console.log(response)
     
-//     //  var toBe=[]
-//     //  response.data.map((e)=>{toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})});
+    //  var toBe=[]
+    //  response.data.map((e)=>{toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})});
      
-//      // console.log(toBe)
+     // console.log(toBe)
      
-//      setStkData(response.data)
+     setStkData(response.data)
   
 
-//      //console.log(data)
+     //console.log(data)
      
-// })
-setStkData(await ddelstock.value)
+})
+//setStkData(await ddelstock.value)
 }
 //should add users array and respective 
 const isthereQuery=(query)=>{
@@ -327,25 +327,25 @@ const isthereSupplierQuery=(query)=>{
 dispatch(reduxfetchStaff())
 const stf=useSelector(state=>state.datastaff)
 const isQueryingLoadStaff=async ()=>{
-//   await axios({
-//     method:'get',
-//     headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//     url:`${LINK_TO_BACKEND}staff/getAllUsers`
-// }).then((response)=>{
-//     console.log(response)
+  await axios({
+    method:'get',
+    headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+    url:`${LINK_TO_BACKEND}staff/getAllUsers`
+}).then((response)=>{
+    console.log(response)
   
-//     var toBe=[]
-//     props.supplierQuery!=undefined?response.data.map((e)=>{toBe.push({id:e.idstaff,name:e.name,role:e.role,email:e.email,activated:e.activationStatus})}):null;
+    var toBe=[]
+    props.supplierQuery!=undefined?response.data.map((e)=>{toBe.push({id:e.idstaff,name:e.name,role:e.role,email:e.email,activated:e.activationStatus})}):null;
    
-//     console.log(toBe)
+    console.log(toBe)
    
-//    setstaffdata(toBe)
+   setstaffdata(toBe)
 
 
-//    console.log("staffdata",staffdata)
+   console.log("staffdata",staffdata)
    
-// })
-setstaffdata(stf.value)
+})
+//setstaffdata(stf.value)
 }
 const QueryDataSales=async ()=>{
   var col=[];

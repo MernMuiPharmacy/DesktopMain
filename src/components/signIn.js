@@ -23,18 +23,13 @@ import axios from 'axios';
 
 import { LINK_TO_BACKEND } from '../var';
 import LinearIndeterminate from './Dashboard/loading';
-import { useSelector, useDispatch } from 'react-redux'
-import { reduxfetch } from '../redux/DataSales.js';
-import { reduxfetchStock } from '../redux/DataStock.js';
-import { reduxfetchSuppliers } from '../redux/DataSuppliers.js';
-import { reduxfetchDeletedStock } from '../redux/DataDeletedStock.js';
-import { reduxfetchDeletedSuppliers } from '../redux/DataDeletedSuppliers.js';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -47,7 +42,7 @@ function Copyright(props) {
 //const defaultTheme = createTheme({palette:{mode:`${theme}`}});
 
 export default function SignInSide({cb,sn,se,sr,si,theme}) {
-  const dispatch=useDispatch()
+ // const dispatch=useDispatch()
   const [isLoading,setIsLoading]=useState(true)
   const defaultTheme = createTheme({palette:{mode:`${theme}`}});
   const [credentials, setCredentials]=useState({useremail:'',userpass:''});
@@ -106,11 +101,11 @@ useEffect (()=>{onscreenload()},[])
                   .post(`${LINK_TO_BACKEND}staff/login`,tobe)
                   .then((resp)=>{storeData(resp.data);cb(resp.data)
                   ;onloadUserCredentials();
-                  dispatch(reduxfetch());
-                  dispatch(reduxfetchStock());
-                  dispatch(reduxfetchSuppliers());
-                  dispatch(reduxfetchDeletedStock());
-                  dispatch(reduxfetchDeletedSuppliers());
+                  // dispatch(reduxfetch());
+                  // dispatch(reduxfetchStock());
+                  // dispatch(reduxfetchSuppliers());
+                  // dispatch(reduxfetchDeletedStock());
+                  // dispatch(reduxfetchDeletedSuppliers());
                   
                  
                  

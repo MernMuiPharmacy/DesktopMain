@@ -58,8 +58,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website 
+      <Link color="inherit" href="https://github.com/devAtefturki">
+        Atef Turki
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -189,65 +189,65 @@ console.log("state!",ds)
 
 
   const onloadStaff=async ()=>{
-//     await axios({
-//         method:'get',
-//         //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//         url:`${LINK_TO_BACKEND}stock/getAllStock`
-//     }).then(async (response)=>{
-//       await axios({
-//         method:'get',
-//         //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//         url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
-//     }).then((resp)=>{
-//         var eliminations=[]
-//         resp.data.map((e)=>{eliminations.push(e.productName)});
+    await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}stock/getAllStock`
+    }).then(async (response)=>{
+      await axios({
+        method:'get',
+        //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+        url:`${LINK_TO_BACKEND}deletedstock/seeDeletions`
+    }).then((resp)=>{
+        var eliminations=[]
+        resp.data.map((e)=>{eliminations.push(e.productName)});
     
  
-//         console.log(response)
+        console.log(response)
       
-//         var toBe=[]
-//         var cat=[]
-//         response.data.map((e)=>{if(!eliminations.includes(e.productName)){!cat.includes(e.type)?cat.push(e.type):null,toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
-//         console.log(toBe) 
-//        setData(toBe)
-//        setCategories(cat)
-//     console.log(data)
+        var toBe=[]
+        var cat=[]
+        response.data.map((e)=>{if(!eliminations.includes(e.productName)){!cat.includes(e.type)?cat.push(e.type):null,toBe.push({qty:e.qty,prescOnly:e.prescOnly,price:e.price,type:e.type,activeIngredient:e.activeIngredient,providers:e.providers,productName:e.productName,productImage:e.productImage,expires:e.expires,refrigerate:e.refrigerate})}});
+        console.log(toBe) 
+       setData(toBe)
+       setCategories(cat)
+    console.log(data)
        
-//   })
-// })
-setData(ds.value.data)
-setCategories(ds.value.categories)
+  })
+})
+// setData(ds.value.data)
+// setCategories(ds.value.categories)
 }
 
 const dsupp=useSelector(state=>state.datasuppliers)
 const onloadsupp=async ()=>{
-//   await axios({
-//     method:'get',
-//     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//     url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
-// }).then(async (response)=>{
-// await axios({
-//     method:'get',
-//     //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
-//     url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
-// }).then((resp)=>{
-//     var eliminations=[]
-//     resp.data.map((e)=>{eliminations.push(e.companyname)});
+  await axios({
+    method:'get',
+    //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+    url:`${LINK_TO_BACKEND}suppliers/getAllSuppliers`
+}).then(async (response)=>{
+await axios({
+    method:'get',
+    //headers: {Authorization:"bearer "+await AsyncStorage.getItem('tokenCookie')},
+    url:`${LINK_TO_BACKEND}deletedsuppliers/seeDeletions`
+}).then((resp)=>{
+    var eliminations=[]
+    resp.data.map((e)=>{eliminations.push(e.companyname)});
 
 
-//     console.log(response)
+    console.log(response)
   
-//     var toBe=[]
-//     response.data.map((e)=>{if(!eliminations.includes(e.companyname)){toBe.push({idprovider:e.idprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})}});
-//     console.log(toBe) 
-//    setSuppData(toBe)
-// //console.log(data)
+    var toBe=[]
+    response.data.map((e)=>{if(!eliminations.includes(e.companyname)){toBe.push({idprovider:e.idprovider,companyname:e.companyname,providerImage:e.providerImage,email:e.email,phoneNumber:e.phoneNumber})}});
+    console.log(toBe) 
+   setSuppData(toBe)
+//console.log(data)
    
-// })
+})
    
-// })
-setSuppData(dsupp.value)
-console.log("dsupp",dsupp)
+})
+// setSuppData(dsupp.value)
+// console.log("dsupp",dsupp)
 }
 {/*
 
