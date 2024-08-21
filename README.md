@@ -1,2 +1,2 @@
 visit here https://mmpdesktop.onrender.com
-use your email mayssa , password is Abc-1234
+either make an account then consult me on changing your role or use manager@medicacom.tn, password is Abc-1234
